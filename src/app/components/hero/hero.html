@@ -1,0 +1,65 @@
+<section class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <span class="hero__greeting">Hello, I'm</span>
+      <h1 class="hero__name">Brahim Baibbat</h1>
+      <h2 class="hero__title">
+        <span class="gradient-text">Full Stack Developer</span>
+      </h2>
+      <p class="hero__subtitle">
+        Building scalable web applications with modern technologies. Specializing in Angular
+        frontend and Spring Boot backend solutions.
+      </p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">View My Work</a>
+        <a href="#contact" class="btn btn--secondary">Get In Touch</a>
+      </div>
+      <div class="hero__badges">
+        @for (tech of techBadges; track tech) {
+          <span class="hero__badge">{{ tech }}</span>
+        }
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__avatar-wrapper">
+        <div class="hero__avatar-glow"></div>
+        <img [src]="profileImage" alt="Brahim Baibbat" class="hero__avatar" />
+      </div>
+      <div class="hero__code-card">
+        <div class="hero__code-header">
+          <span class="hero__code-dot"></span>
+          <span class="hero__code-dot"></span>
+          <span class="hero__code-dot"></span>
+        </div>
+        <pre
+          class="hero__code"
+        ><code><span class="hero__code-keyword">interface</span> <span class="hero__code-type">Developer</span> <span class="hero__code-punct">&#123;</span>
+  name<span class="hero__code-punct">:</span> <span class="hero__code-string">'Brahim Baibbat'</span>
+  role<span class="hero__code-punct">:</span> <span class="hero__code-string">'Full Stack Dev'</span>
+  stack<span class="hero__code-punct">:</span> <span class="hero__code-type">string</span><span class="hero__code-punct">[]</span>
+  passion<span class="hero__code-punct">:</span> <span class="hero__code-string">'Building Impact'</span>
+<span class="hero__code-punct">&#125;</span></code></pre>
+      </div>
+      <div class="hero__floating hero__floating--1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <div class="hero__floating hero__floating--2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M3 9h18" />
+          <path d="M9 21V9" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Scroll to explore</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7" />
+    </svg>
+  </div>
+</section>

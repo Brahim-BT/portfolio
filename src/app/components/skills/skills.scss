@@ -1,0 +1,114 @@
+.skills {
+  background: var(--color-bg);
+
+  &__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  &__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  &__subtitle {
+    color: var(--color-on-surface-variant);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+
+    @media (max-width: 968px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-surface-container-low);
+    transition: all var(--transition-base);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 218, 248, 0.04);
+      border-color: var(--color-surface-container-high);
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-container-low);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  &__item {
+  }
+
+  &__item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  &__item-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &__item-percent {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  &__item-bar {
+    height: 6px;
+    background: var(--color-surface-container-low);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__item-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-container));
+    border-radius: 3px;
+    transition: width 1s ease-out;
+  }
+}

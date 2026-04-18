@@ -1,0 +1,40 @@
+<header class="nav">
+  <div class="nav__container">
+    <a href="#" class="nav__logo" (click)="closeMenu()">
+      <span class="nav__logo-text">Brahim Baibbat</span>
+    </a>
+
+    <ul class="nav__links">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a [href]="link.href" class="nav__link" (click)="closeMenu()">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+
+    <button class="nav__menu-btn" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()" aria-label="Toggle menu">
+      <span class="nav__menu-icon" [class.nav__menu-icon--open]="isMenuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-overlay" [class.nav-overlay--open]="isMenuOpen()" (click)="closeMenu()"></div>
+
+<nav class="nav-mobile" [class.nav-mobile--open]="isMenuOpen()" aria-hidden="{{!isMenuOpen()}}">
+  <button class="nav-mobile__close" (click)="closeMenu()" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <ul class="nav-mobile__links">
+    @for (link of navLinks; track link.label) {
+      <li>
+        <a [href]="link.href" class="nav-mobile__link" (click)="closeMenu()">{{ link.label }}</a>
+      </li>
+    }
+  </ul>
+</nav>
