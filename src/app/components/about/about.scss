@@ -14,6 +14,9 @@
   }
 
   &__image-col {
+    display: flex;
+    justify-content: center;
+
     @media (max-width: 968px) {
       display: flex;
       justify-content: center;
@@ -24,9 +27,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
 
     @media (max-width: 968px) {
       margin-bottom: var(--spacing-xl);
+      align-items: center;
     }
   }
 
@@ -42,6 +49,12 @@
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
     max-width: 320px;
+    justify-items: center;
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-md);
+    }
   }
 
   &__tool {

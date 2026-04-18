@@ -1,6 +1,12 @@
 <section class="hero">
   <div class="hero__container">
     <div class="hero__content">
+      <div class="hero__mobile-avatar">
+        <div class="hero__mobile-avatar-wrapper">
+          <div class="hero__mobile-avatar-glow"></div>
+          <img [src]="profileImage" alt="Brahim Baibbat" class="hero__mobile-avatar-img" />
+        </div>
+      </div>
       <span class="hero__greeting">Hello, I'm</span>
       <h1 class="hero__name">Brahim Baibbat</h1>
       <h2 class="hero__title">
@@ -13,11 +19,6 @@
       <div class="hero__actions">
         <a href="#projects" class="btn btn--primary">View My Work</a>
         <a href="#contact" class="btn btn--secondary">Get In Touch</a>
-      </div>
-      <div class="hero__badges">
-        @for (tech of techBadges; track tech) {
-          <span class="hero__badge">{{ tech }}</span>
-        }
       </div>
     </div>
     <div class="hero__visual">

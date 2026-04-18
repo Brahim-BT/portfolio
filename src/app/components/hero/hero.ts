@@ -10,15 +10,4 @@ import { CommonModule } from '@angular/common';
 })
 export class HeroComponent {
   profileImage = 'assets/profile-photo.png';
-
-  techBadges = [
-    'Angular',
-    'TypeScript',
-    'Spring Boot',
-    'Java',
-    'RxJS',
-    'PostgreSQL',
-    'REST APIs',
-    'Docker',
-  ];
 }
