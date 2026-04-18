@@ -2,16 +2,18 @@
   <div class="container">
     <div class="about__grid">
       <div class="about__image-col">
-        <div class="about__image-wrapper">
-          <div class="about__image">
-            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="100" cy="100" r="100" fill="var(--color-surface-container-low)"/>
-              <circle cx="100" cy="80" r="40" fill="var(--color-surface-container-high)"/>
-              <ellipse cx="100" cy="170" rx="60" ry="40" fill="var(--color-surface-container-high)"/>
-              <path d="M60 60 L140 60 L130 100 L70 100 Z" fill="var(--color-primary)" opacity="0.3"/>
-            </svg>
+        <div class="about__tools">
+          <h3 class="about__tools-title">Favorite Tools</h3>
+          <div class="about__tools-grid">
+            @for (tool of favoriteTools; track tool.name) {
+              <div class="about__tool">
+                <div class="about__tool-icon">
+                  <app-icon [icon]="tool.icon" [size]="40" [fallback]="tool.name.substring(0, 2)"></app-icon>
+                </div>
+                <span class="about__tool-name">{{ tool.name }}</span>
+              </div>
+            }
           </div>
-          <div class="about__image-decoration"></div>
         </div>
       </div>
       <div class="about__content">
