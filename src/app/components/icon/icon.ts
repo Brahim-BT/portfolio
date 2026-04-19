@@ -52,6 +52,9 @@ export class IconComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['icon'] && this.icon?.svg) {
+      // SECURITY NOTE: bypassSecurityTrustHtml is intentional here because SVG data
+      // comes from the trusted @thesvg/icons package, not from untrusted user input.
+      // If icons are ever sourced from external APIs or user input, this must be revised.
       this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(this.icon.svg);
     }
     if (changes['fallback'] && !this.icon?.svg) {
