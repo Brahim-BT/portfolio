@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,6 +10,27 @@ import { CommonModule } from '@angular/common';
 })
 export class NavComponent {
   isMenuOpen = signal(false);
+  isDarkMode = signal(this.getStoredTheme());
+
+  constructor() {
+    effect(() => {
+      const isDark = this.isDarkMode();
+      document.documentElement.dataset['theme'] = isDark ? 'dark' : 'light';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  }
+
+  private getStoredTheme(): boolean {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const stored = localStorage.getItem('theme');
+      return stored !== 'light';
+    }
+    return true;
+  }
+
+  toggleTheme() {
+    this.isDarkMode.update(v => !v);
+  }
 
   navLinks = [
     { label: 'About', href: '#about' },
