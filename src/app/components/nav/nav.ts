@@ -1,5 +1,6 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal, effect, PLATFORM_ID, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
@@ -9,19 +10,31 @@ import { CommonModule } from '@angular/common';
   styleUrl: './nav.scss'
 })
 export class NavComponent {
+  private platformId = inject(PLATFORM_ID);
+  isBrowser = isPlatformBrowser(this.platformId);
+
   isMenuOpen = signal(false);
   isDarkMode = signal(this.getStoredTheme());
 
   constructor() {
-    effect(() => {
-      const isDark = this.isDarkMode();
-      document.documentElement.dataset['theme'] = isDark ? 'dark' : 'light';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
+    if (this.isBrowser) {
+      // Apply theme on init
+      this.applyTheme(this.isDarkMode());
+
+      effect(() => {
+        const isDark = this.isDarkMode();
+        this.applyTheme(isDark);
+      });
+    }
+  }
+
+  private applyTheme(isDark: boolean) {
+    document.documentElement.dataset['theme'] = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
 
   private getStoredTheme(): boolean {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const stored = localStorage.getItem('theme');
       return stored !== 'light';
     }
@@ -42,11 +55,15 @@ export class NavComponent {
 
   toggleMenu() {
     this.isMenuOpen.update(v => !v);
-    document.body.style.overflow = this.isMenuOpen() ? 'hidden' : '';
+    if (this.isBrowser) {
+      document.body.style.overflow = this.isMenuOpen() ? 'hidden' : '';
+    }
   }
 
   closeMenu() {
     this.isMenuOpen.set(false);
-    document.body.style.overflow = '';
+    if (this.isBrowser) {
+      document.body.style.overflow = '';
+    }
   }
 }
